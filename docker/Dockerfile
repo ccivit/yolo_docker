@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get upgrade
 RUN apt-get install -y python python-pip python-numpy
 RUN pip install --upgrade pip
-RUN apt-get install -y bzip2 git nano
+RUN apt-get install -y bzip2 git nano wget curl
 
 RUN pip install Cython
 RUN git clone https://github.com/ccivit/yolo_docker.git
