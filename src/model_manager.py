@@ -14,12 +14,21 @@ def find_github_model_url(config):
     import json,time
     author = config['repo_author']
     repo = config['repo']
-    github_token = config['token']
+    try:
+        github_token = config['token']
+        token_available = True
+    except:
+        print('No token provided, trying without token...')
+        token_available = False
     
     print('Finding asset location from latest',repo)
-    curl_command = 'curl -H "Authorization: token "''' + github_token + ' \
-        https://api.github.com/repos/' + author + '/' + repo + '/releases/latest' #tag/0.1.0'
-    
+    if token_available:
+        curl_command = 'curl -H "Authorization: token "''' + github_token + ' \
+            https://api.github.com/repos/' + author + '/' + repo + '/releases/latest'
+    else:
+        curl_command = 'curl -H \
+            https://api.github.com/repos/' + author + '/' + repo + '/releases/latest'  
+        
     temp_json_file = 'temp.json' 
     temp_config_file = 'temp.txt' 
     os.system(curl_command + ' > ' + temp_json_file) 
