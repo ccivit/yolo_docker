@@ -1,0 +1,6 @@
+yolov3.weights:
+    location: github
+    repo: yolo_docker
+    repo_author: ccivit
+    release_version: 0.0.1
+
