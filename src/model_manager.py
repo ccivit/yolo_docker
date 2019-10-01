@@ -72,3 +72,8 @@ def check_and_download(model_path):
             print('ERROR: Model could not be downloaded.')
             return 1
     return 0
+              
+if __name__ == '__main__':
+    print('Checking if models are found locally...')
+    check_and_download('bin/yolov3.weights')
+              
