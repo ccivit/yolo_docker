@@ -9,9 +9,13 @@ RUN apt-get install -y bzip2 git nano wget curl
 
 RUN pip install Cython
 RUN git clone https://github.com/ccivit/yolo_docker.git
-RUN cd yolo_docker
+
+WORKDIR /yolo_docker
+
 RUN pip install .
 
+RUN pip3 install --upgrade pip
+RUN pip3 install opencv-python
 
 
 #RUN apt-get update && apt-get install -y \
